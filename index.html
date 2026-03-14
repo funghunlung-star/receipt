@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Receipt Tracker</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="app-header">
+        <div class="brand">
+          <span class="brand-mark">R₵</span>
+          <div class="brand-text">
+            <h1>Receipt Tracker</h1>
+            <p>Log your receipts, see where money goes.</p>
+          </div>
+        </div>
+        <button id="clearAllBtn" class="ghost-btn" type="button">
+          Clear all
+        </button>
+      </header>
+
+      <main class="app-main">
+        <section class="card form-card">
+          <h2>Add receipt</h2>
+          <form id="receiptForm">
+            <div class="form-row">
+              <div class="field">
+                <label for="date">Date</label>
+                <input id="date" name="date" type="date" required />
+              </div>
+              <div class="field">
+                <label for="vendor">Vendor</label>
+                <input
+                  id="vendor"
+                  name="vendor"
+                  type="text"
+                  placeholder="Store or merchant"
+                  required
+                />
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="field">
+                <label for="category">Category</label>
+                <select id="category" name="category" required>
+                  <option value="">Choose…</option>
+                  <option>Groceries</option>
+                  <option>Restaurants</option>
+                  <option>Transport</option>
+                  <option>Housing</option>
+                  <option>Utilities</option>
+                  <option>Shopping</option>
+                  <option>Entertainment</option>
+                  <option>Health</option>
+                  <option>Subscriptions</option>
+                  <option>Travel</option>
+                  <option>Education</option>
+                  <option>Gifts &amp; Donations</option>
+                  <option>Fees &amp; Charges</option>
+                  <option>Taxes</option>
+                  <option>Insurance</option>
+                  <option>Technology</option>
+                  <option>Other</option>
+                </select>
+              </div>
+              <div class="field">
+                <label for="amount">Amount</label>
+                <div class="amount-input">
+                  <span class="prefix">$</span>
+                  <input
+                    id="amount"
+                    name="amount"
+                    type="number"
+                    min="0"
+                    step="0.01"
+                    placeholder="0.00"
+                    required
+                  />
+                </div>
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="field">
+                <label for="notes">Notes</label>
+                <input
+                  id="notes"
+                  name="notes"
+                  type="text"
+                  placeholder="Optional details"
+                />
+              </div>
+            </div>
+
+            <div class="form-actions">
+              <button type="submit" class="primary-btn">Save receipt</button>
+              <button type="reset" class="ghost-btn">Reset</button>
+            </div>
+          </form>
+        </section>
+
+        <section class="card list-card">
+          <header class="list-header">
+            <div>
+              <h2>Receipts</h2>
+              <p class="muted">
+                Filter by search or category. Data is saved in your browser.
+              </p>
+            </div>
+            <div class="filters">
+              <div class="field">
+                <label for="filterText">Search</label>
+                <input
+                  id="filterText"
+                  type="text"
+                  placeholder="Vendor, notes…"
+                />
+              </div>
+              <div class="field">
+                <label for="filterCategory">Category</label>
+                <select id="filterCategory">
+                  <option value="">All</option>
+                  <option>Groceries</option>
+                  <option>Restaurants</option>
+                  <option>Transport</option>
+                  <option>Housing</option>
+                  <option>Utilities</option>
+                  <option>Shopping</option>
+                  <option>Entertainment</option>
+                  <option>Health</option>
+                  <option>Subscriptions</option>
+                  <option>Travel</option>
+                  <option>Education</option>
+                  <option>Gifts &amp; Donations</option>
+                  <option>Fees &amp; Charges</option>
+                  <option>Taxes</option>
+                  <option>Insurance</option>
+                  <option>Technology</option>
+                  <option>Other</option>
+                </select>
+              </div>
+            </div>
+          </header>
+
+          <div class="table-wrapper">
+            <table class="receipts-table">
+              <thead>
+                <tr>
+                  <th>Date</th>
+                  <th>Vendor</th>
+                  <th>Category</th>
+                  <th class="numeric">Amount</th>
+                  <th>Notes</th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody id="receiptsBody">
+                <!-- rows injected by JS -->
+              </tbody>
+            </table>
+            <p id="emptyState" class="empty-state">
+              No receipts yet. Add your first one above.
+            </p>
+          </div>
+
+          <footer class="list-footer">
+            <div class="summary-item">
+              <span class="label">Count</span>
+              <span id="summaryCount" class="value">0</span>
+            </div>
+            <div class="summary-item">
+              <span class="label">Total</span>
+              <span id="summaryTotal" class="value">$0.00</span>
+            </div>
+            <div class="summary-item">
+              <span class="label">Average</span>
+              <span id="summaryAverage" class="value">$0.00</span>
+            </div>
+          </footer>
+        </section>
+      </main>
+    </div>
+
+    <script src="app.js"></script>
+  </body>
+</html>
+
